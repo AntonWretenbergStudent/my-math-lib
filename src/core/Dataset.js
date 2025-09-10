@@ -1,16 +1,17 @@
 import { ensureNonEmpty, ensureArrayOfNumbers } from "./Validator.js";
-import { sortedNumeric } from "./ArrayOps.js";
+import { sortedNumeric, sumArray, maxArray, minArray } from "./ArrayOps.js";
 
 export class Dataset {
+  #data; // private field
+
   constructor(numbers = []) {
     ensureNonEmpty(numbers);
     ensureArrayOfNumbers(numbers);
-    this._data = [...numbers];
+    this.#data = [...numbers]; // defensiv kopia
   }
 
   median() {
-    ensureNonEmpty(this._data);
-    const sorted = sortedNumeric(this._data);
+    const sorted = sortedNumeric(this.#data);
     const mid = Math.floor(sorted.length / 2);
     return sorted.length % 2
       ? sorted[mid]
@@ -18,13 +19,14 @@ export class Dataset {
   }
 
   sum() {
-    ensureNonEmpty(this._data);
-    ensureArrayOfNumbers(this._data);
+    return sumArray(this.#data);
+  }
 
-    let total = 0;
-    for (let i = 0; i < this._data.length; i++) {
-      total += this._data[i];
-    }
-    return total;
+  max() {
+    return maxArray(this.#data);
+  }
+
+  min() {
+    return minArray(this.#data);
   }
 }
