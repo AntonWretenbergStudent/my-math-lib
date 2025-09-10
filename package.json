@@ -1,0 +1,24 @@
+{
+  "name": "my-math-lib",
+  "version": "1.0.0",
+  "description": "A simple math library with mean, median and other helpers.",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "node test-app/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AntonWretenbergStudent/my-math-lib.git"
+  },
+  "keywords": ["math", "library", "statistics"],
+  "author": "Anton Wretenberg",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AntonWretenbergStudent/my-math-lib/issues"
+  },
+  "homepage": "https://github.com/AntonWretenbergStudent/my-math-lib#readme",
+  "files": [
+    "src"
+  ]
+}
