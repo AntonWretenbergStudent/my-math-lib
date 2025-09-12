@@ -12,6 +12,15 @@ export function sortedNumeric(arr) {
   return copy;
 }
 
+export function medianArray(arr) {
+  const sorted = sortedNumeric(arr);
+  const mid = Math.floor(sorted.length / 2);
+  return sorted.length % 2
+    ? sorted[mid]
+    : (sorted[mid - 1] + sorted[mid]) / 2;
+}
+
+
 export function sumArray(arr) {
   let total = 0;
   for (let i = 0; i < arr.length; i++) {
@@ -38,4 +47,23 @@ export function minArray(arr) {
     }
   }
   return lowest;
+}
+
+export function percentileRankArray(arr, value) {
+  let count = 0
+  for(let i = 0; i < arr.length; i++) {
+    if(arr[i] <= value) {
+      count++
+    }
+  }
+  return count / arr.length
+}
+
+export function uniqueArray(arr) {
+  return arr.reduce((acc, val) => {
+    if (!acc.includes(val)) {
+      acc.push(val);
+    }
+    return acc;
+  }, []);
 }

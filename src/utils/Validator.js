@@ -12,3 +12,13 @@ export function ensureArrayOfNumbers(arr) {
     }
   }
 }
+
+export function ensureInRange(arr, min, max) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] < min || arr[i] > max) {
+      throw new Error(
+        `Value ${arr[i]} at index ${i} is out of range [${min}, ${max}]`
+      )
+    }
+  } 
+}

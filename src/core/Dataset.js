@@ -1,5 +1,13 @@
-import { ensureNonEmpty, ensureArrayOfNumbers } from "./Validator.js";
-import { sortedNumeric, sumArray, maxArray, minArray } from "./ArrayOps.js";
+import { ensureNonEmpty, ensureArrayOfNumbers, ensureInRange } from "../utils/Validator.js";
+import {
+  medianArray,
+  sumArray,
+  maxArray,
+  minArray,
+  sortedNumeric,
+  percentileRankArray,
+  uniqueArray,
+} from "../utils/ArrayOps.js";
 
 export class Dataset {
   #data; // private field
@@ -11,11 +19,11 @@ export class Dataset {
   }
 
   median() {
-    const sorted = sortedNumeric(this.#data);
-    const mid = Math.floor(sorted.length / 2);
-    return sorted.length % 2
-      ? sorted[mid]
-      : (sorted[mid - 1] + sorted[mid]) / 2;
+    return medianArray(this.#data);
+  }
+
+  sort() {
+    return sortedNumeric(this.#data);
   }
 
   sum() {
@@ -28,5 +36,22 @@ export class Dataset {
 
   min() {
     return minArray(this.#data);
+  }
+
+  mean() {
+    return this.sum() / this.#data.length;
+  }
+
+  percentileRank(value) {
+    return percentileRankArray(this.#data, value);
+  }
+
+  unique() {
+    return uniqueArray(this.#data);
+  }
+
+  ensureRange(min, max) {
+    ensureInRange(this.#data, min, max)
+    return true
   }
 }
