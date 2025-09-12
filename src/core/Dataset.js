@@ -1,4 +1,8 @@
-import { ensureNonEmpty, ensureArrayOfNumbers, ensureInRange } from "../utils/Validator.js";
+import {
+  ensureNonEmpty,
+  ensureArrayOfNumbers,
+  ensureInRange,
+} from "../utils/Validator.js";
 import {
   medianArray,
   sumArray,
@@ -7,6 +11,8 @@ import {
   sortedNumeric,
   percentileRankArray,
   uniqueArray,
+  rangeArray,
+  shuffleArray,
 } from "../utils/ArrayOps.js";
 
 export class Dataset {
@@ -51,7 +57,15 @@ export class Dataset {
   }
 
   ensureRange(min, max) {
-    ensureInRange(this.#data, min, max)
-    return true
+    ensureInRange(this.#data, min, max);
+    return true;
+  }
+
+  range() {
+    return rangeArray(this.#data);
+  }
+
+  shuffle() {
+    return shuffleArray(this.#data)
   }
 }
